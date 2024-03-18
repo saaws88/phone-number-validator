@@ -23,10 +23,12 @@ public class Parser {
     HashMap<String, List<String>> wrongNumberOrders = new HashMap<>();
 
     String line;
+    int count = 0;
 
     skipHeader(br);
     while ((line = br.readLine())!= null) {
 
+      count++;
       List<String> wrongNums = new ArrayList<>();
       String[] columns = separateLine(line);
 
@@ -43,6 +45,7 @@ public class Parser {
 
     }
 
+    System.out.printf("Кол-во заказов %s\n", count);
     return wrongNumberOrders;
 
   }
@@ -68,14 +71,14 @@ public class Parser {
             .replace("]", "");
 
         count++;
-        writer.println(key + "," + valueToPrint);
+        writer.printf("%s, \"%s\"\n", key, valueToPrint);
 
       }
 
       writer.close();
 
       System.out.printf(
-          "Создан файл %s\n Количество заказов без корректных номеров телефона: %d\n", outFile.getName(), count
+          "Создан файл %s\nКоличество заказов без мобильного номера телефона: %d\n", outFile.getName(), count
       );
 
     }
