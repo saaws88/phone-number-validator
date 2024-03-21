@@ -84,7 +84,7 @@ public class XlsParser {
 
   public void writeToFile(HSSFWorkbook wb) throws IOException {
 
-    Path OUT_DIR_PATH = Path.of(System.getProperty("OUT_FOLDER_PATH"));
+    Path OUT_DIR_PATH = Path.of(System.getProperty(System.getProperty("OUT_FILE_PATH")));
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm");
     String filePath =  OUT_DIR_PATH + LocalDateTime.now().format(formatter) + ".xlsx";
     File outFile = new File(filePath);
