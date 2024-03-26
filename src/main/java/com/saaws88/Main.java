@@ -14,9 +14,10 @@ public class Main {
 
     long startTime = System.nanoTime();
     HSSFWorkbook wbIn = p.readWorkbook(args[0]);
+    String outPath = args[1];
     List<HSSFRow> wrongNumbers = p.getWrongNumberRowsList(wbIn);
     HSSFWorkbook wbOut = p.writeToWorkBook(wrongNumbers);
-    p.writeToFile(wbOut);
+    p.writeToFile(wbOut, outPath);
     long endTime = System.nanoTime();
     double elapsedTime = (endTime - startTime) / 1e+9;
     System.out.printf("Выполнено за %.2f сек. \n", elapsedTime);
